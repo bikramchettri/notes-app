@@ -1,0 +1,35 @@
+npm create vite@latest
+npm i react-router-dom
+
+#THIS IS A NOTE
+```
+this.is.code()
+```
+*Hello my dear friends*
+
+function App() {
+  return <h1>Code goes here</h1>;
+}
+export default App;
+
+//default export name can be changed export default App; was exported and imported as Joo
+import Joo from './App.jsx';
+
+
+export const App = () => {
+  return <h1>Code goes here</h1>;
+};
+
+// named import
+import { App } from './App.jsx';
+import { App as Goo } from './App.jsx'; // name can be changed of named export aswell
+
+
+Pushing an existing repository from the command line
+git remote add origin git@github.com:bikramchettri/notes-app.git
+git branch -M main
+git push -u origin main
+
+
+npx babel-node src/server.js
+"start": "concurrently 'npm run dev --prefix client' 'npm run dev'"
