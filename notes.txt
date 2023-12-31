@@ -33,3 +33,33 @@ git push -u origin main
 
 npx babel-node src/server.js
 "start": "concurrently 'npm run dev --prefix client' 'npm run dev'"
+
+
+package.json front-end
+{
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080",
+      "changeOrigin": true,
+      "rewrite": (path) => path.replace(/^\/api/, '')
+    }
+  }
+}
+OR
+{"proxy": "http://localhost:8080",}
+
+
+
+  //   https://vitejs.dev/config/server-options.html#server-cors
+  //   proxy: {
+  //     '/': {
+  //       target: 'http://localhost:8080',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\//, ''),
+  //     },
+  //     // '/api': {
+  //     //   target: 'http://localhost:8080',
+  //     //   changeOrigin: true,
+  //     //   rewrite: (path) => path.replace(/^\/api/, ''),
+  //     // },
+  //   },

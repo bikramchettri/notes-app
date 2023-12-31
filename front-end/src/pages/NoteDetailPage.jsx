@@ -5,7 +5,7 @@ import { NoteNotFoundPage } from './NoteNotFoundPage';
 import ReactMarkdown from 'react-markdown';
 
 export const NoteDetailPage = () => {
-  const { notes, updateNote } = useContext(NotesContext);
+  const { notes, isLoading, updateNote } = useContext(NotesContext);
 
   const { noteId } = useParams();
   const note = notes.find((n) => n.id === noteId);
@@ -22,6 +22,9 @@ export const NoteDetailPage = () => {
     setIsEditing(false);
   };
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   if (!note) {
     return <NoteNotFoundPage />;
   }
