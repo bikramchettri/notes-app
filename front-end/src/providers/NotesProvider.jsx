@@ -42,14 +42,25 @@ export const NotesProvider = ({ children }) => {
     }
   };
 
-  const updateNote = (id, { title, content }) => {
-    setNotes(
-      notes.map((note) => (note.id === id ? { id, title, content } : note))
-    );
+  const updateNote = async (id, { title, content }) => {
+    try {
+      const response = await axios.put(`/notes/${id}`, {
+        title,
+        content,
+      });
+      setNotes(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const deleteNote = (id) => {
-    setNotes(notes.filter((note) => note.id !== id));
+  const deleteNote = async (id) => {
+    try {
+      const response = await axios.delete(`/notes/${id}`);
+      setNotes(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

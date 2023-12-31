@@ -43,11 +43,15 @@ export const NotesPage = () => {
       </Modal>
 
       <h1>My Notes</h1>
-      <NotesList
-        notes={notes}
-        onRequestDelete={(id) => setCurrentlyDeletingNoteId(id)}
-        onClickItem={(id) => navigate(`/notes/${id}`)}
-      />
+      {notes.length === 0 ? (
+        <p className="weak">There are currently no notes, add one!</p>
+      ) : (
+        <NotesList
+          notes={notes}
+          onRequestDelete={(id) => setCurrentlyDeletingNoteId(id)}
+          onClickItem={(id) => navigate(`/notes/${id}`)}
+        />
+      )}
       <button
         className="full-width space-below"
         onClick={() => setNewNoteModalIsOpen(true)}
